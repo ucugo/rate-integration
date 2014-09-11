@@ -1,0 +1,14 @@
+<c:url value="${url}" var="first">
+    <c:param name="${pageParameterName}" value="${pager.firstPage}"/>
+</c:url>
+<c:url value="${url}" var="prev">
+    <c:param name="${pageParameterName}" value="${pager.previousPage}"/>
+</c:url>
+<c:url value="${url}" var="next">
+    <c:param name="${pageParameterName}" value="${pager.nextPage}"/>
+</c:url>
+<c:url value="${url}" var="last">
+    <c:param name="${pageParameterName}" value="${pager.lastPage}"/>
+</c:url>
+<c:set var="pageNumber" value="${pager.currentPage + 1}"/>
+<c:set var="pageCount" value="${pager.pageCount}" />

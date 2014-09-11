@@ -1,0 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="common" tagdir="/WEB-INF/tags/common" %>
+<%@ taglib prefix="all" tagdir="/WEB-INF/tags/all" %>
+<%@ taglib prefix="comp" tagdir="/WEB-INF/tags/component" %>
+<%@ taglib prefix="evrestImage" uri="/WEB-INF/tld/evrest-image.tld"%>
+<%@ taglib prefix="format" uri="/WEB-INF/tld/format.tld" %>

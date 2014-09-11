@@ -1,0 +1,54 @@
+<%@include file="taglibs.tagf" %>
+<%@attribute name="id" type="java.lang.Integer" required="false" %>
+<%@attribute name="excludeIcon" type="java.lang.Boolean" required="false" %>
+<%@attribute name="nickname" type="java.lang.String" required="true" %>
+<%@attribute name="online" type="java.lang.Boolean" required="true" %>
+<%@attribute name="link" type="java.lang.String" required="false" %>
+<%@attribute name="gender" type="java.lang.String" required="true" %>
+<%@attribute name="accessKey" type="java.lang.String" required="false" %>
+<%@attribute name="color" type="java.lang.String" required="false" %>
+<%@attribute name="variant" type="java.lang.String" required="false" %>
+<%@attribute name="protectLink" type="java.lang.Boolean" required="false" %>
+<%@attribute name="background" type="java.lang.String" required="false" %>
+
+<c:if test="${empty background}" >
+	<c:set var="background" value="${requestScope.affiliate_bckgrnd}" />
+</c:if>
+
+<c:if test="${gender ne 'male' and gender ne 'female'}">
+	<c:set var="gender" value="male"/>
+</c:if>
+
+<c:choose>
+	<c:when test="${empty variant}">
+		<c:set var="variantStr" value=""/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="variantStr" value=".${variant}"/>
+	</c:otherwise>
+</c:choose>
+
+<%
+	if (id == null && link == null)
+	{
+		throw new IllegalStateException("Either id or link attribute must be provided.");
+	}
+%>
+
+<c:choose>
+	<c:when test="${empty link}">
+		<c:url var="linkUnescaped" value="/profile.jsp?pid=${id}"/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="linkUnescaped" value="${link}"/>
+	</c:otherwise>
+</c:choose>
+
+<c:choose>
+	<c:when test="${online}">
+		<c:set var="indicator" value="[!$ONLINE$!]" />
+	</c:when>
+	<c:otherwise>
+		<c:set var="indicator" value="[!$OFFLINE$!]" />
+	</c:otherwise>
+</c:choose>

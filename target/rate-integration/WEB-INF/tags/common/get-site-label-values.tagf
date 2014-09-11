@@ -1,0 +1,23 @@
+
+<%@tag import="rnd.util.JspUtils"%>
+<%@tag import="za.co.axon.venus.core.SiteLabelUtils"%>
+<%@tag import="java.text.MessageFormat"%>
+<%@tag import="za.co.axon.venus.core.SiteLabel"%>
+<%@tag import="org.apache.commons.lang.StringUtils"%>
+<%@tag import="org.springframework.web.bind.ServletRequestUtils"%>
+<%@tag import="java.util.Map"%>
+<%@tag import="java.util.Arrays"%>
+<%@tag import="java.util.List"%>
+
+<%
+	List<String> valueList = SiteLabelUtils.getSafe(request, label, defaultValue, false,JspUtils.getValues((Map<String, Object>) jspContext.getAttribute("params"),"param"));
+	boolean showSiteLabelNames = "true".equals(request.getHeader("showSiteLabelNames"));
+
+	if (showSiteLabelNames) {
+		String showValue = "SL[label='" + label + "', defaultValue='" + defaultValue + "', currentValue='" + valueList + "']";
+		valueList = Arrays.asList(showValue);
+	}
+%>
+
+
+

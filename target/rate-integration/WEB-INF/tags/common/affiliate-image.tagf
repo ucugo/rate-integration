@@ -1,0 +1,14 @@
+<%@include file="taglibs.tagf" %>
+
+<%@tag import="za.co.axon.venus.core.Affiliate"%>
+<jsp:useBean id="affiliateResources" type="rnd.ui.web.helpers.AffiliateResources" scope="application"/>
+<%@attribute name="src" required="true" %>
+<%@attribute name="alt" required="false" %>
+<%
+	String affiliate = ((Affiliate) request.getAttribute("aff")).getAffiliate();
+	String imageName = affiliateResources.get(affiliate, src);
+	if (imageName == null) {
+		throw new IllegalArgumentException("Couldn't find image " + src + " for affiliate " + affiliate);
+	}
+%>
+<c:url var="imageUrl" value="<%= imageName %>" />
